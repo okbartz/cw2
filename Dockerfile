@@ -1,7 +1,5 @@
-FROM node:16
-
-COPY server.js /usr/src/server
-
+FROM node:6.14.2
 EXPOSE 8080
+COPY server.js .
+CMD node server.js
 
-CMD {"Node","server.js"} 
