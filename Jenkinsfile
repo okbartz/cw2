@@ -28,7 +28,7 @@ pipeline {
                 sh 'docker push okbartz/cw2:1.0'
             }
         }
-        }
+        
 
         stage('Deploy') {
             steps {
@@ -36,3 +36,4 @@ pipeline {
             }
         }
     }
+}
