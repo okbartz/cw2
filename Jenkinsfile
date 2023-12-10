@@ -22,8 +22,9 @@ pipeline {
         stage('Push Image') {
         
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                DOCKER_COMMON_CREDS = credentials('dockerHub') 
+                
+                sh "docker login -u $DOCKER_COMMON_CREDS_USR -p $DOCKER_COMMON_CREDS_PSW"
                 sh 'docker push okbartz/cw2:1.0'
             }
         }
@@ -35,4 +36,3 @@ pipeline {
             }
         }
     }
-}
