@@ -35,7 +35,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sshagent(['ProductionServer']) {
+                    sh 'ssh ubuntu@172.31.62.78'
+                }
+            
+                sh 'kubectl set image deployments/image-deployment image-deployment=okbartz/cw2:1.0'
+
             }
         }
     }
