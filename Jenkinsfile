@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker image build -t okbartz/cw2 .'
+                sh 'docker image build -t  okbartz/cw2 .'
 
             }
         }
@@ -40,7 +40,9 @@ pipeline {
 		sh '''
                     ssh ubuntu@172.31.62.78 '/usr/bin/kubectl set image deployments/image-deployment cw2=okbartz/cw2:latest'
                     '''
-
+		  sh '''
+                    ssh ubuntu@172.31.62.78 'kubectl rollout restart deployments/image-deployment'
+		     '''
                 }
             }
         }
