@@ -38,7 +38,7 @@ pipeline {
                 sshagent(['ProductionServer']) {
                     
 		sh '''
-                    ssh ubuntu@172.31.62.78 '/usr/bin/kubectl set image deployments/image-deployment imagedeployment1=okbartz/cw2:1.0'
+                    ssh ubuntu@172.31.62.78 '/usr/bin/kubectl set image deployments/image-deployment image-deployment=okbartz/cw2:1.0'
                     '''
 
                 }
