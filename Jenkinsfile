@@ -36,10 +36,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(['ProductionServer']) {
-		
-		sh '''
-                    ssh ubuntu@172.31.62.78 'docker pull okbartz/cw2'
-                    '''
                     
 		sh '''
                     ssh ubuntu@172.31.62.78 '/usr/bin/kubectl set image deployments/image-deployment cw2=okbartz/cw2:latest'
