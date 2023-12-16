@@ -38,7 +38,7 @@ pipeline {
                 sshagent(['ProductionServer']) {
 		
 		sh '''
-                    ssh ubuntu@172.31.62.78 'docker pull'
+                    ssh ubuntu@172.31.62.78 'docker pull okbartz/cw2'
                     '''
                     
 		sh '''
